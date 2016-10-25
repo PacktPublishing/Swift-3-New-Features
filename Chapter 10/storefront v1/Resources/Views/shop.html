@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MyShop</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="styles/app.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="main">
+                <h1>Welcome to my shop!</h1>
+                <ul>
+                    <li>
+                        <div class="store_product">
+                            <img src="/images/tv1.png"/>
+                            <span class="prod_title">Classic TV</span>
+                            <span class="prod_price">$100.00</span>
+                            <button class="buy_btn" product_id=1>Buy Now</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="store_product">
+                            <img src="/images/speakers.png"/>
+                            <span class="prod_title">Massive Sound</span>
+                            <span class="prod_price">$199.00</span>
+                            <button class="buy_btn" product_id=2>Buy Now</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="store_product">
+                            <img src="/images/turntable.png"/>
+                            <span class="prod_title">Turntable</span>
+                            <span class="prod_price">$249.00</span>
+                            <button class="buy_btn" product_id=3>Buy Now</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <script>
+            $( ".buy_btn" ).click(function(){
+                var product_id = $(this).attr("product_id");
+                    $.post( "/purchase", {"product_id": product_id})
+                    .done(function(data){
+                        alert("Thank you for your purchase!");
+                          console.log(data);
+                    });
+            });
+            </script>
+    </body>
+</html>
